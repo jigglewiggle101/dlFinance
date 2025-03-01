@@ -5,7 +5,7 @@ import os
 # Get API keys from environment variables
 API_KEY = os.getenv('ALPACA_API_KEY')
 API_SECRET = os.getenv('ALPACA_API_SECRET')
-BASE_URL = 'https://paper-api.alpaca.markets'  # For paper trading
+BASE_URL = 'https://paper-api.alpaca.markets/v2'  # For paper trading
 
 api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL, api_version='v2')
 
