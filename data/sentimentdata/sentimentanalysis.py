@@ -19,11 +19,10 @@ BEARER_TOKEN = os.getenv('BEARER_TOKEN')
 client = tweepy.Client(bearer_token=BEARER_TOKEN)
 
 # List of stock symbols to fetch sentiment for
-symbols = ['AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'META', 'NVDA', 'SPY', 'NFLX', 'BA',
-           'INTC', 'DIS', 'AMD', 'IBM', 'V', 'PYPL', 'NVDA', 'ORCL', 'WMT', 'COST', 'INTC']
+symbols = ['AAPL', 'GOOGL', 'AMZN', 'META', 'NVDA']
 
 # Function to fetch tweets for a given stock symbol
-def fetch_tweets(symbol, max_results=100):
+def fetch_tweets(symbol, max_results=10):
     tweets = []
     try:
         # Search for tweets related to the symbol
@@ -45,7 +44,7 @@ def analyze_sentiment(tweets):
     return sentiment_scores
 
 # Function to fetch and analyze sentiment for a list of stocks in batches
-def fetch_sentiment_data(symbols, batch_size=10, delay=60):
+def fetch_sentiment_data(symbols, batch_size=10):
     sentiment_data = []
 
     # Process symbols in batches
@@ -73,10 +72,6 @@ def fetch_sentiment_data(symbols, batch_size=10, delay=60):
                 'avg_sentiment': sum(sentiment_scores) / len(sentiment_scores) if sentiment_scores else 0
             })
 
-        # Add a delay between batches to avoid rate limits
-        print(f"Waiting for {delay} seconds before the next batch...")
-        time.sleep(delay)
-
     # Convert sentiment data to a DataFrame
     sentiment_df = pd.DataFrame(sentiment_data)
     sentiment_df.to_csv('sentiment_analysis.csv', index=False)
@@ -84,3 +79,4 @@ def fetch_sentiment_data(symbols, batch_size=10, delay=60):
 
 # Fetch and analyze sentiment data for the specified symbols
 fetch_sentiment_data(symbols)
+

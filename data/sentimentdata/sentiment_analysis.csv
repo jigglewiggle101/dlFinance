@@ -1,1 +1,2 @@
-
+symbol,tweets,positive_sentiment,negative_sentiment,neutral_sentiment,avg_sentiment
+AAPL,10,6,2,2,0.21877604166666664

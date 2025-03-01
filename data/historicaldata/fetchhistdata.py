@@ -32,11 +32,7 @@ def fetch_historical_data(symbols, start='2020-01-01', end='2021-01-01', interva
     return data
 
 # List of publicly traded companies (replace or add more tickers as needed)
-symbols = [
-    'AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'META', 'NVDA', 'SPY', 'NFLX', 'BA',
-    'INTC', 'DIS', 'AMD', 'IBM', 'V', 'PYPL', 'NVDA', 'ORCL', 'WMT', 'COST', 'INTC'
-    # You can add more symbols here (or load them from an external source)
-]
+symbols = ['AAPL', 'GOOGL', 'AMZN', 'META', 'NVDA']
 
 # Fetch historical data for these symbols between 2020 and 2021
 fetch_historical_data(symbols, start='2020-01-01', end='2021-01-01', interval='1d')
